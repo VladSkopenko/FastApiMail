@@ -17,7 +17,7 @@ conf = ConnectionConfig(
     MAIL_FROM="skopil@meta.ua",
     MAIL_PORT=465,
     MAIL_SERVER="smtp.meta.ua",
-    MAIL_FROM_NAME="Example email",
+    MAIL_FROM_NAME="Vladislav",
     MAIL_STARTTLS=False,
     MAIL_SSL_TLS=True,
     USE_CREDENTIALS=True,
@@ -31,15 +31,15 @@ app = FastAPI()
 @app.post("/send-email")
 async def send_in_background(background_tasks: BackgroundTasks, body: EmailSchema):
     message = MessageSchema(
-        subject="My list to you",
+        subject="Privetic",
         recipients=[body.email],
-        template_body={"fullname": "Vladislav Skopenko"},
+        template_body={"fullname": "Liuda Skopenko"},
         subtype=MessageType.html
     )
 
     fm = FastMail(conf)
 
-    background_tasks.add_task(fm.send_message, message, template_name="example_email.html")
+    background_tasks.add_task(fm.send_message, message, template_name="email.html")
 
     return {"message": "email has been sent"}
 
