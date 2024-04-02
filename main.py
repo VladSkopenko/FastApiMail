@@ -33,7 +33,7 @@ async def send_in_background(background_tasks: BackgroundTasks, body: EmailSchem
     message = MessageSchema(
         subject="Privetic",
         recipients=[body.email],
-        template_body={"fullname": "Liuda Skopenko"},
+        template_body={"fullname": "Skopenko"},
         subtype=MessageType.html
     )
 
